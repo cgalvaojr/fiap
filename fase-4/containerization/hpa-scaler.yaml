@@ -1,19 +1,19 @@
 apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: hpa-atividade-fiap
-  namespace: cgalvaojr
+  name: criado-via-yaml
+  namespace: fiap-aso-cgalvaojr
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
     name: blog-django-py-git
-  minReplicas: 2
+  minReplicas: 1
   maxReplicas: 10
   metrics:
     - type: Resource
       resource:
         name: cpu
         target:
-          averageUtilization: 20
+          averageUtilization: 50
           type: Utilization
