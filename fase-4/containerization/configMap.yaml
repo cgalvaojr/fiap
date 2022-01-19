@@ -1,0 +1,55 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: blog-django-py-git-1-ca
+  namespace: fiap-aso-cgalvaojr
+  selfLink: /api/v1/namespaces/fiap-aso-cgalvaojr/configmaps/blog-django-py-git-1-ca
+  uid: 7ee06384-0772-4873-8b16-43c3a3c4c50f
+  resourceVersion: '16251517'
+  creationTimestamp: '2022-01-09T15:28:46Z'
+  ownerReferences:
+    - apiVersion: v1
+      kind: Pod
+      name: blog-django-py-git-1-build
+      uid: 33272b4c-00ff-4713-a3fb-7ad657ae2430
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:28:46Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:data':
+          .: {}
+          'f:service-ca.crt': {}
+        'f:metadata':
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"33272b4c-00ff-4713-a3fb-7ad657ae2430"}':
+              .: {}
+              'f:apiVersion': {}
+              'f:kind': {}
+              'f:name': {}
+              'f:uid': {}
+data:
+  service-ca.crt: |
+    -----BEGIN CERTIFICATE-----
+    MIIDUTCCAjmgAwIBAgIIGA/sOGGHcjcwDQYJKoZIhvcNAQELBQAwNjE0MDIGA1UE
+    Awwrb3BlbnNoaWZ0LXNlcnZpY2Utc2VydmluZy1zaWduZXJAMTYzOTk3NjU2NjAe
+    Fw0yMTEyMjAwNTAyNDVaFw0yNDAyMTgwNTAyNDZaMDYxNDAyBgNVBAMMK29wZW5z
+    aGlmdC1zZXJ2aWNlLXNlcnZpbmctc2lnbmVyQDE2Mzk5NzY1NjYwggEiMA0GCSqG
+    SIb3DQEBAQUAA4IBDwAwggEKAoIBAQDMQobXFQWDNuFsbsszzrfyfM9Ml/NOrqL8
+    vURvn76r1JPpjkpO6ltFS90VDThozrJs79ZBr3KwQtue+yy8ZPhs24wk6JR8vLJK
+    VhM1e/CiCRAme9xyAdZamBe0eacffH6UEktSLK5LQfhhToBxkVkeMvc9UL/R6sV8
+    bFvdXcgu6AI61ZGqzQq8RrdnOjXU7/yhSDvZkxB5jOxul3I+US+v7PW9cRH4ITtR
+    Z3DowpbUiUj4w44VPhnI6iB44x0LSSP5AwR0ohhKuVz5SyJ9HBZ7j/w4Gerew4d8
+    uG6YPZGJwOI2oQy91rcbGKsB/QfdCfag5ew97ZRY0BifE55b0V9BAgMBAAGjYzBh
+    MA4GA1UdDwEB/wQEAwICpDAPBgNVHRMBAf8EBTADAQH/MB0GA1UdDgQWBBSf7zkr
+    ciXE+R+6oa1pND+53lpNJzAfBgNVHSMEGDAWgBSf7zkrciXE+R+6oa1pND+53lpN
+    JzANBgkqhkiG9w0BAQsFAAOCAQEAQBBKDHcEjBKirzr9d8UKKgG/cjo5K1W0JtyS
+    UfYf0FVfYMScv2Wpo+k6SNiNJdl4UgFhz5fePC7F5N2YmdULIhHFxFEtkVEekQAy
+    jH59yDpD12bxn1hDXKZR2bPPVSkbAZtgIfPWad2TbfTNrlAL4wv5dd1dQ8iNoIGF
+    VRwUfAiEZPLTCIR1u1I/qIqUTwLS5SDMC2Y7x6jYrZe//1dgqq+Uj3y2tLf44Vpo
+    av4ftYRd9SNZxV/2MGFgSMgvsxSSAIQRyAOyCenFV9hX4dlDrIipHTqnZDdCgC26
+    M+EZ2+sfMZlZUQNTbaqiQElB146Muw4I1dMfGHV38b5R7aPZbw==
+    -----END CERTIFICATE-----
