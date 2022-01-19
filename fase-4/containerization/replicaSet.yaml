@@ -1,0 +1,256 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  generateName: blog-django-py-git-744d684bd4-
+  annotations:
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.131.2.86"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.131.2.86"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    kubernetes.io/limit-ranger: >-
+      LimitRanger plugin set: cpu, memory request for container
+      blog-django-py-git; cpu, memory limit for container blog-django-py-git
+    openshift.io/scc: restricted
+  selfLink: >-
+    /api/v1/namespaces/fiap-aso-cgalvaojr/pods/blog-django-py-git-744d684bd4-t7v5m
+  resourceVersion: '16256092'
+  name: blog-django-py-git-744d684bd4-t7v5m
+  uid: 9d4a0030-b8e2-4bcf-a552-81bae126be32
+  creationTimestamp: '2022-01-09T15:36:37Z'
+  managedFields:
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:36:37Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:generateName': {}
+          'f:labels':
+            .: {}
+            'f:app': {}
+            'f:deploymentconfig': {}
+            'f:pod-template-hash': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"d06bfe3a-3fad-4006-9416-b1059670def3"}':
+              .: {}
+              'f:apiVersion': {}
+              'f:blockOwnerDeletion': {}
+              'f:controller': {}
+              'f:kind': {}
+              'f:name': {}
+              'f:uid': {}
+        'f:spec':
+          'f:containers':
+            'k:{"name":"blog-django-py-git"}':
+              'f:image': {}
+              'f:terminationMessagePolicy': {}
+              .: {}
+              'f:resources': {}
+              'f:env':
+                .: {}
+                'k:{"name":"BLOG_BANNER_COLOR"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"BLOG_SITE_NAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+              'f:terminationMessagePath': {}
+              'f:imagePullPolicy': {}
+              'f:ports':
+                .: {}
+                'k:{"containerPort":8080,"protocol":"TCP"}':
+                  .: {}
+                  'f:containerPort': {}
+                  'f:protocol': {}
+              'f:name': {}
+          'f:dnsPolicy': {}
+          'f:enableServiceLinks': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:securityContext': {}
+          'f:terminationGracePeriodSeconds': {}
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:36:39Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:36:40Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.131.2.86"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+  namespace: fiap-aso-cgalvaojr
+  ownerReferences:
+    - apiVersion: apps/v1
+      kind: ReplicaSet
+      name: blog-django-py-git-744d684bd4
+      uid: d06bfe3a-3fad-4006-9416-b1059670def3
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    app: blog-django-py-git
+    deploymentconfig: blog-django-py-git
+    pod-template-hash: 744d684bd4
+spec:
+  restartPolicy: Always
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: default-dockercfg-cflwm
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: na46-bjfsg-worker-0-c4j47
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c49,c19'
+    fsGroup: 1002390000
+  containers:
+    - resources:
+        limits:
+          cpu: 1500m
+          memory: 2Gi
+        requests:
+          cpu: 5m
+          memory: 50Mi
+      terminationMessagePath: /dev/termination-log
+      name: blog-django-py-git
+      env:
+        - name: BLOG_BANNER_COLOR
+          value: black
+        - name: BLOG_SITE_NAME
+          value: FIAP ASO CGALVAOJR
+      securityContext:
+        capabilities:
+          drop:
+            - KILL
+            - MKNOD
+            - SETGID
+            - SETUID
+        runAsUser: 1002390000
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: default-token-hpn4b
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-aso-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+  serviceAccount: default
+  volumes:
+    - name: default-token-hpn4b
+      secret:
+        secretName: default-token-hpn4b
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:37Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:40Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:40Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:37Z'
+  hostIP: 10.0.0.29
+  podIP: 10.131.2.86
+  podIPs:
+    - ip: 10.131.2.86
+  startTime: '2022-01-09T15:36:37Z'
+  containerStatuses:
+    - restartCount: 0
+      started: true
+      ready: true
+      name: blog-django-py-git
+      state:
+        running:
+          startedAt: '2022-01-09T15:36:39Z'
+      imageID: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-aso-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-aso-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+      lastState: {}
+      containerID: 'cri-o://59e6aa8aeba5f3bac64889e2cda97b180cd7cb3198df0551e8d383ad7bef7833'
+  qosClass: Burstable
