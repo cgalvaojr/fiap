@@ -1,39 +1,47 @@
-kind: ReplicaSet
-apiVersion: apps/v1
+kind: Pod
+apiVersion: v1
 metadata:
+  generateName: blog-django-py-git-744d684bd4-
   annotations:
-    alpha.image.policy.openshift.io/resolve-names: '*'
-    app.openshift.io/vcs-uri: 'https://github.com/openshift-katacoda/blog-django-py.git'
-    deployment.kubernetes.io/desired-replicas: '1'
-    deployment.kubernetes.io/max-replicas: '2'
-    deployment.kubernetes.io/revision: '2'
-    image.openshift.io/triggers: >-
-      [{"from":{"kind":"ImageStreamTag","name":"blog-django-py-git:latest","namespace":"fiap-aso-cgalvaojr"},"fieldPath":"spec.template.spec.containers[?(@.name==\"blog-django-py-git\")].image","pause":"false"}]
-    openshift.io/generated-by: OpenShiftWebConsole
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.131.2.86"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.131.2.86"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    kubernetes.io/limit-ranger: >-
+      LimitRanger plugin set: cpu, memory request for container
+      blog-django-py-git; cpu, memory limit for container blog-django-py-git
+    openshift.io/scc: restricted
   selfLink: >-
-    /apis/apps/v1/namespaces/fiap-aso-cgalvaojr/replicasets/blog-django-py-git-6bc488b9c5
-  resourceVersion: '16254237'
-  name: blog-django-py-git-6bc488b9c5
-  uid: 0889e505-6c88-487b-8a1a-52504bdef6b3
-  creationTimestamp: '2022-01-09T15:29:56Z'
-  generation: 2
+    /api/v1/namespaces/fiap-cgalvaojr/pods/blog-django-py-git-744d684bd4-t7v5m
+  resourceVersion: '16256092'
+  name: blog-django-py-git-744d684bd4-t7v5m
+  uid: 9d4a0030-b8e2-4bcf-a552-81bae126be32
+  creationTimestamp: '2022-01-09T15:36:37Z'
   managedFields:
     - manager: kube-controller-manager
       operation: Update
-      apiVersion: apps/v1
-      time: '2022-01-09T15:33:45Z'
+      apiVersion: v1
+      time: '2022-01-09T15:36:37Z'
       fieldsType: FieldsV1
       fieldsV1:
         'f:metadata':
-          'f:annotations':
-            .: {}
-            'f:alpha.image.policy.openshift.io/resolve-names': {}
-            'f:app.openshift.io/vcs-uri': {}
-            'f:deployment.kubernetes.io/desired-replicas': {}
-            'f:deployment.kubernetes.io/max-replicas': {}
-            'f:deployment.kubernetes.io/revision': {}
-            'f:image.openshift.io/triggers': {}
-            'f:openshift.io/generated-by': {}
+          'f:generateName': {}
           'f:labels':
             .: {}
             'f:app': {}
@@ -41,7 +49,7 @@ metadata:
             'f:pod-template-hash': {}
           'f:ownerReferences':
             .: {}
-            'k:{"uid":"f2499613-8c36-41ef-a8aa-c017eec3ea26"}':
+            'k:{"uid":"d06bfe3a-3fad-4006-9416-b1059670def3"}':
               .: {}
               'f:apiVersion': {}
               'f:blockOwnerDeletion': {}
@@ -50,85 +58,1698 @@ metadata:
               'f:name': {}
               'f:uid': {}
         'f:spec':
-          'f:replicas': {}
-          'f:selector':
-            'f:matchLabels':
+          'f:containers':
+            'k:{"name":"blog-django-py-git"}':
+              'f:image': {}
+              'f:terminationMessagePolicy': {}
               .: {}
-              'f:app': {}
-              'f:pod-template-hash': {}
-          'f:template':
-            'f:metadata':
-              'f:labels':
+              'f:resources': {}
+              'f:env':
                 .: {}
-                'f:app': {}
-                'f:deploymentconfig': {}
-                'f:pod-template-hash': {}
-            'f:spec':
-              'f:containers':
-                'k:{"name":"blog-django-py-git"}':
+                'k:{"name":"BLOG_BANNER_COLOR"}':
                   .: {}
-                  'f:image': {}
-                  'f:imagePullPolicy': {}
                   'f:name': {}
-                  'f:ports':
-                    .: {}
-                    'k:{"containerPort":8080,"protocol":"TCP"}':
-                      .: {}
-                      'f:containerPort': {}
-                      'f:protocol': {}
-                  'f:resources': {}
-                  'f:terminationMessagePath': {}
-                  'f:terminationMessagePolicy': {}
-              'f:dnsPolicy': {}
-              'f:restartPolicy': {}
-              'f:schedulerName': {}
-              'f:securityContext': {}
-              'f:terminationGracePeriodSeconds': {}
+                  'f:value': {}
+                'k:{"name":"BLOG_SITE_NAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+              'f:terminationMessagePath': {}
+              'f:imagePullPolicy': {}
+              'f:ports':
+                .: {}
+                'k:{"containerPort":8080,"protocol":"TCP"}':
+                  .: {}
+                  'f:containerPort': {}
+                  'f:protocol': {}
+              'f:name': {}
+          'f:dnsPolicy': {}
+          'f:enableServiceLinks': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:securityContext': {}
+          'f:terminationGracePeriodSeconds': {}
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:36:39Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:36:40Z'
+      fieldsType: FieldsV1
+      fieldsV1:
         'f:status':
-          'f:observedGeneration': {}
-          'f:replicas': {}
-  namespace: fiap-aso-cgalvaojr
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.131.2.86"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+  namespace: fiap-cgalvaojr
   ownerReferences:
     - apiVersion: apps/v1
-      kind: Deployment
-      name: blog-django-py-git
-      uid: f2499613-8c36-41ef-a8aa-c017eec3ea26
+      kind: ReplicaSet
+      name: blog-django-py-git-744d684bd4
+      uid: d06bfe3a-3fad-4006-9416-b1059670def3
       controller: true
       blockOwnerDeletion: true
   labels:
     app: blog-django-py-git
     deploymentconfig: blog-django-py-git
-    pod-template-hash: 6bc488b9c5
+    pod-template-hash: 744d684bd4
 spec:
-  replicas: 0
-  selector:
-    matchLabels:
-      app: blog-django-py-git
-      pod-template-hash: 6bc488b9c5
-  template:
-    metadata:
-      creationTimestamp: null
-      labels:
-        app: blog-django-py-git
-        deploymentconfig: blog-django-py-git
-        pod-template-hash: 6bc488b9c5
-    spec:
-      containers:
-        - name: blog-django-py-git
-          image: >-
-            image-registry.openshift-image-registry.svc:5000/fiap-aso-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
-          ports:
-            - containerPort: 8080
-              protocol: TCP
-          resources: {}
-          terminationMessagePath: /dev/termination-log
-          terminationMessagePolicy: File
-          imagePullPolicy: Always
-      restartPolicy: Always
-      terminationGracePeriodSeconds: 30
-      dnsPolicy: ClusterFirst
-      securityContext: {}
-      schedulerName: default-scheduler
+  restartPolicy: Always
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: default-dockercfg-cflwm
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: na46-bjfsg-worker-0-c4j47
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c49,c19'
+    fsGroup: 1002390000
+  containers:
+    - resources:
+        limits:
+          cpu: 1500m
+          memory: 2Gi
+        requests:
+          cpu: 5m
+          memory: 50Mi
+      terminationMessagePath: /dev/termination-log
+      name: blog-django-py-git
+      env:
+        - name: BLOG_BANNER_COLOR
+          value: black
+        - name: BLOG_SITE_NAME
+          value: FIAP ASO CGALVAOJR
+      securityContext:
+        capabilities:
+          drop:
+            - KILL
+            - MKNOD
+            - SETGID
+            - SETUID
+        runAsUser: 1002390000
+      ports:
+        - containerPort: 8080
+          protocol: TCP
+      imagePullPolicy: Always
+      volumeMounts:
+        - name: default-token-hpn4b
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+  serviceAccount: default
+  volumes:
+    - name: default-token-hpn4b
+      secret:
+        secretName: default-token-hpn4b
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
 status:
-  replicas: 0
-  observedGeneration: 2
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:37Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:40Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:40Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:36:37Z'
+  hostIP: 10.0.0.29
+  podIP: 10.131.2.86
+  podIPs:
+    - ip: 10.131.2.86
+  startTime: '2022-01-09T15:36:37Z'
+  containerStatuses:
+    - restartCount: 0
+      started: true
+      ready: true
+      name: blog-django-py-git
+      state:
+        running:
+          startedAt: '2022-01-09T15:36:39Z'
+      imageID: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git@sha256:d18c085741530d1078aca5dd54ede4c84734dddabcf08be4619e36edef1e448b
+      lastState: {}
+      containerID: 'cri-o://59e6aa8aeba5f3bac64889e2cda97b180cd7cb3198df0551e8d383ad7bef7833'
+  qosClass: Burstable
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  generateName: sample-database-1-
+  annotations:
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.130.2.182"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.130.2.182"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    kubernetes.io/limit-ranger: >-
+      LimitRanger plugin set: cpu request for container postgresql; cpu limit
+      for container postgresql
+    openshift.io/deployment-config.latest-version: '1'
+    openshift.io/deployment-config.name: sample-database
+    openshift.io/deployment.name: sample-database-1
+    openshift.io/generated-by: OpenShiftNewApp
+    openshift.io/scc: restricted
+  selfLink: /api/v1/namespaces/fiap-cgalvaojr/pods/sample-database-1-f9trs
+  resourceVersion: '17064489'
+  name: sample-database-1-f9trs
+  uid: e2e4f222-1b5e-495e-98f0-4819eb5ff1dc
+  creationTimestamp: '2022-01-10T14:30:02Z'
+  managedFields:
+    - manager: kube-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-10T14:30:02Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/deployment-config.latest-version': {}
+            'f:openshift.io/deployment-config.name': {}
+            'f:openshift.io/deployment.name': {}
+            'f:openshift.io/generated-by': {}
+          'f:generateName': {}
+          'f:labels':
+            .: {}
+            'f:deployment': {}
+            'f:deploymentconfig': {}
+            'f:name': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"00e00832-2996-40a7-90e7-1647494b0d2c"}':
+              .: {}
+              'f:apiVersion': {}
+              'f:blockOwnerDeletion': {}
+              'f:controller': {}
+              'f:kind': {}
+              'f:name': {}
+              'f:uid': {}
+        'f:spec':
+          'f:containers':
+            'k:{"name":"postgresql"}':
+              'f:image': {}
+              'f:volumeMounts':
+                .: {}
+                'k:{"mountPath":"/var/lib/pgsql/data"}':
+                  .: {}
+                  'f:mountPath': {}
+                  'f:name': {}
+              'f:terminationMessagePolicy': {}
+              .: {}
+              'f:resources':
+                .: {}
+                'f:limits':
+                  .: {}
+                  'f:memory': {}
+                'f:requests':
+                  .: {}
+                  'f:memory': {}
+              'f:livenessProbe':
+                .: {}
+                'f:exec':
+                  .: {}
+                  'f:command': {}
+                'f:failureThreshold': {}
+                'f:initialDelaySeconds': {}
+                'f:periodSeconds': {}
+                'f:successThreshold': {}
+                'f:timeoutSeconds': {}
+              'f:env':
+                .: {}
+                'k:{"name":"POSTGRESQL_DATABASE"}':
+                  .: {}
+                  'f:name': {}
+                  'f:valueFrom':
+                    .: {}
+                    'f:secretKeyRef':
+                      .: {}
+                      'f:key': {}
+                      'f:name': {}
+                'k:{"name":"POSTGRESQL_PASSWORD"}':
+                  .: {}
+                  'f:name': {}
+                  'f:valueFrom':
+                    .: {}
+                    'f:secretKeyRef':
+                      .: {}
+                      'f:key': {}
+                      'f:name': {}
+                'k:{"name":"POSTGRESQL_USER"}':
+                  .: {}
+                  'f:name': {}
+                  'f:valueFrom':
+                    .: {}
+                    'f:secretKeyRef':
+                      .: {}
+                      'f:key': {}
+                      'f:name': {}
+              'f:readinessProbe':
+                .: {}
+                'f:exec':
+                  .: {}
+                  'f:command': {}
+                'f:failureThreshold': {}
+                'f:initialDelaySeconds': {}
+                'f:periodSeconds': {}
+                'f:successThreshold': {}
+                'f:timeoutSeconds': {}
+              'f:securityContext':
+                .: {}
+                'f:capabilities': {}
+                'f:privileged': {}
+              'f:terminationMessagePath': {}
+              'f:imagePullPolicy': {}
+              'f:ports':
+                .: {}
+                'k:{"containerPort":5432,"protocol":"TCP"}':
+                  .: {}
+                  'f:containerPort': {}
+                  'f:protocol': {}
+              'f:name': {}
+          'f:dnsPolicy': {}
+          'f:enableServiceLinks': {}
+          'f:restartPolicy': {}
+          'f:schedulerName': {}
+          'f:securityContext': {}
+          'f:terminationGracePeriodSeconds': {}
+          'f:volumes':
+            .: {}
+            'k:{"name":"sample-database-data"}':
+              .: {}
+              'f:name': {}
+              'f:persistentVolumeClaim':
+                .: {}
+                'f:claimName': {}
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-10T14:36:18Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-10T14:36:27Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.130.2.182"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+  namespace: fiap-cgalvaojr
+  ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: sample-database-1
+      uid: 00e00832-2996-40a7-90e7-1647494b0d2c
+      controller: true
+      blockOwnerDeletion: true
+  labels:
+    deployment: sample-database-1
+    deploymentconfig: sample-database
+    name: sample-database
+spec:
+  restartPolicy: Always
+  serviceAccountName: default
+  imagePullSecrets:
+    - name: default-dockercfg-cflwm
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 30
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: na46-bjfsg-worker-0-rxkkg
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c49,c19'
+    fsGroup: 1002390000
+  containers:
+    - resources:
+        limits:
+          cpu: 1500m
+          memory: 512Mi
+        requests:
+          cpu: 5m
+          memory: 512Mi
+      readinessProbe:
+        exec:
+          command:
+            - /usr/libexec/check-container
+        initialDelaySeconds: 5
+        timeoutSeconds: 1
+        periodSeconds: 10
+        successThreshold: 1
+        failureThreshold: 3
+      terminationMessagePath: /dev/termination-log
+      name: postgresql
+      livenessProbe:
+        exec:
+          command:
+            - /usr/libexec/check-container
+            - '--live'
+        initialDelaySeconds: 120
+        timeoutSeconds: 10
+        periodSeconds: 10
+        successThreshold: 1
+        failureThreshold: 3
+      env:
+        - name: POSTGRESQL_USER
+          valueFrom:
+            secretKeyRef:
+              name: sample-database
+              key: database-user
+        - name: POSTGRESQL_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: sample-database
+              key: database-password
+        - name: POSTGRESQL_DATABASE
+          valueFrom:
+            secretKeyRef:
+              name: sample-database
+              key: database-name
+      securityContext:
+        capabilities:
+          drop:
+            - KILL
+            - MKNOD
+            - SETGID
+            - SETUID
+        privileged: false
+        runAsUser: 1002390000
+      ports:
+        - containerPort: 5432
+          protocol: TCP
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: sample-database-data
+          mountPath: /var/lib/pgsql/data
+        - name: default-token-hpn4b
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:c58b255376a4c1f6744b56389f0984f465b74e9c6a62626894f850ab74dec0ea
+  serviceAccount: default
+  volumes:
+    - name: sample-database-data
+      persistentVolumeClaim:
+        claimName: sample-database
+    - name: default-token-hpn4b
+      secret:
+        secretName: default-token-hpn4b
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
+status:
+  phase: Running
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-10T14:30:02Z'
+    - type: Ready
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-10T14:36:27Z'
+    - type: ContainersReady
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-10T14:36:27Z'
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-10T14:30:02Z'
+  hostIP: 10.0.2.206
+  podIP: 10.130.2.182
+  podIPs:
+    - ip: 10.130.2.182
+  startTime: '2022-01-10T14:30:02Z'
+  containerStatuses:
+    - restartCount: 0
+      started: true
+      ready: true
+      name: postgresql
+      state:
+        running:
+          startedAt: '2022-01-10T14:36:18Z'
+      imageID: >-
+        image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:c58b255376a4c1f6744b56389f0984f465b74e9c6a62626894f850ab74dec0ea
+      image: >-
+        image-registry.openshift-image-registry.svc:5000/openshift/postgresql@sha256:c58b255376a4c1f6744b56389f0984f465b74e9c6a62626894f850ab74dec0ea
+      lastState: {}
+      containerID: 'cri-o://67cc29b92d9b8150a9c7031ba10a43475b25ec4522220132c12a352ef5b5d813'
+  qosClass: Burstable
+---
+  kind: Pod
+  apiVersion: v1
+  metadata:
+    annotations:
+      k8s.v1.cni.cncf.io/network-status: |-
+        [{
+            "name": "",
+            "interface": "eth0",
+            "ips": [
+                "10.130.5.173"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      k8s.v1.cni.cncf.io/networks-status: |-
+        [{
+            "name": "",
+            "interface": "eth0",
+            "ips": [
+                "10.130.5.173"
+            ],
+            "default": true,
+            "dns": {}
+        }]
+      kubernetes.io/limit-ranger: >-
+        LimitRanger plugin set: cpu, memory request for container sti-build; cpu,
+        memory limit for container sti-build; cpu, memory request for init
+        container git-clone; cpu, memory limit for init container git-clone; cpu,
+        memory request for init container manage-dockerfile; cpu, memory limit for
+        init container manage-dockerfile
+      openshift.io/build.name: blog-django-py-git-1
+      openshift.io/scc: privileged
+    selfLink: /api/v1/namespaces/fiap-cgalvaojr/pods/blog-django-py-git-1-build
+    resourceVersion: '16252221'
+    name: blog-django-py-git-1-build
+    uid: 33272b4c-00ff-4713-a3fb-7ad657ae2430
+    creationTimestamp: '2022-01-09T15:28:46Z'
+    managedFields:
+      - manager: openshift-controller-manager
+        operation: Update
+        apiVersion: v1
+        time: '2022-01-09T15:28:46Z'
+        fieldsType: FieldsV1
+        fieldsV1:
+          'f:metadata':
+            'f:annotations':
+              .: { }
+              'f:openshift.io/build.name': { }
+            'f:labels':
+              .: { }
+              'f:openshift.io/build.name': { }
+            'f:ownerReferences':
+              .: { }
+              'k:{"uid":"e0c4a169-a0c6-40f3-ac2d-49ea4e4f753b"}':
+                .: { }
+                'f:apiVersion': { }
+                'f:controller': { }
+                'f:kind': { }
+                'f:name': { }
+                'f:uid': { }
+          'f:spec':
+            'f:volumes':
+              'k:{"name":"builder-dockercfg-lvzgz-push"}':
+                .: { }
+                'f:name': { }
+                'f:secret':
+                  .: { }
+                  'f:defaultMode': { }
+                  'f:secretName': { }
+              'k:{"name":"build-proxy-ca-bundles"}':
+                .: { }
+                'f:configMap':
+                  .: { }
+                  'f:defaultMode': { }
+                  'f:items': { }
+                  'f:name': { }
+                'f:name': { }
+              'k:{"name":"container-storage-root"}':
+                .: { }
+                'f:emptyDir': { }
+                'f:name': { }
+              'k:{"name":"build-ca-bundles"}':
+                .: { }
+                'f:configMap':
+                  .: { }
+                  'f:defaultMode': { }
+                  'f:items': { }
+                  'f:name': { }
+                'f:name': { }
+              'k:{"name":"buildcachedir"}':
+                .: { }
+                'f:hostPath':
+                  .: { }
+                  'f:path': { }
+                  'f:type': { }
+                'f:name': { }
+              .: { }
+              'k:{"name":"builder-dockercfg-lvzgz-pull"}':
+                .: { }
+                'f:name': { }
+                'f:secret':
+                  .: { }
+                  'f:defaultMode': { }
+                  'f:secretName': { }
+              'k:{"name":"buildworkdir"}':
+                .: { }
+                'f:emptyDir': { }
+                'f:name': { }
+              'k:{"name":"build-blob-cache"}':
+                .: { }
+                'f:emptyDir': { }
+                'f:name': { }
+              'k:{"name":"build-system-configs"}':
+                .: { }
+                'f:configMap':
+                  .: { }
+                  'f:defaultMode': { }
+                  'f:name': { }
+                'f:name': { }
+              'k:{"name":"node-pullsecrets"}':
+                .: { }
+                'f:hostPath':
+                  .: { }
+                  'f:path': { }
+                  'f:type': { }
+                'f:name': { }
+            'f:containers':
+              'k:{"name":"sti-build"}':
+                'f:image': { }
+                'f:volumeMounts':
+                  'k:{"mountPath":"/var/run/secrets/openshift.io/push"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                    'f:readOnly': { }
+                  'k:{"mountPath":"/tmp/build"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/build-system"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                    'f:readOnly': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/pki"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/certs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  .: { }
+                  'k:{"mountPath":"/var/run/secrets/openshift.io/pull"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                    'f:readOnly': { }
+                  'k:{"mountPath":"/var/cache/blobs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/lib/kubelet/config.json"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/lib/containers/storage"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/lib/containers/cache"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                'f:terminationMessagePolicy': { }
+                .: { }
+                'f:resources': { }
+                'f:args': { }
+                'f:env':
+                  'k:{"name":"BUILD"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_REPOSITORY"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_STORAGE_DRIVER"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"DROP_CAPS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"PULL_DOCKERCFG_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_SIGNATURE_POLICY_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTPS_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"SOURCE_URI"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  .: { }
+                  'k:{"name":"BUILD_REGISTRIES_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"LANG"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"NO_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_BLOBCACHE_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"PUSH_DOCKERCFG_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTP_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_REGISTRIES_DIR_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_STORAGE_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_CONTEXT_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"ALLOWED_UIDS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                'f:securityContext':
+                  .: { }
+                  'f:privileged': { }
+                'f:terminationMessagePath': { }
+                'f:imagePullPolicy': { }
+                'f:name': { }
+            'f:dnsPolicy': { }
+            'f:serviceAccount': { }
+            'f:restartPolicy': { }
+            'f:activeDeadlineSeconds': { }
+            'f:schedulerName': { }
+            'f:nodeSelector':
+              .: { }
+              'f:kubernetes.io/os': { }
+            'f:terminationGracePeriodSeconds': { }
+            'f:initContainers':
+              .: { }
+              'k:{"name":"git-clone"}':
+                'f:image': { }
+                'f:volumeMounts':
+                  .: { }
+                  'k:{"mountPath":"/tmp/build"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/cache/blobs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/build-system"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                    'f:readOnly': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/certs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/pki"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                'f:terminationMessagePolicy': { }
+                .: { }
+                'f:resources': { }
+                'f:args': { }
+                'f:env':
+                  'k:{"name":"BUILD"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_REPOSITORY"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"DROP_CAPS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_SIGNATURE_POLICY_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTPS_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"SOURCE_URI"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  .: { }
+                  'k:{"name":"BUILD_REGISTRIES_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"LANG"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"NO_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_BLOBCACHE_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTP_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_REGISTRIES_DIR_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_STORAGE_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_CONTEXT_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"ALLOWED_UIDS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                'f:terminationMessagePath': { }
+                'f:imagePullPolicy': { }
+                'f:name': { }
+              'k:{"name":"manage-dockerfile"}':
+                'f:image': { }
+                'f:volumeMounts':
+                  .: { }
+                  'k:{"mountPath":"/tmp/build"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/cache/blobs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/build-system"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                    'f:readOnly': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/certs"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                  'k:{"mountPath":"/var/run/configs/openshift.io/pki"}':
+                    .: { }
+                    'f:mountPath': { }
+                    'f:name': { }
+                'f:terminationMessagePolicy': { }
+                .: { }
+                'f:resources': { }
+                'f:args': { }
+                'f:env':
+                  'k:{"name":"BUILD"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_REPOSITORY"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"DROP_CAPS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_SIGNATURE_POLICY_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTPS_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"SOURCE_URI"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  .: { }
+                  'k:{"name":"BUILD_REGISTRIES_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"LANG"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"NO_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_BLOBCACHE_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"HTTP_PROXY"}':
+                    .: { }
+                    'f:name': { }
+                  'k:{"name":"BUILD_REGISTRIES_DIR_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"BUILD_STORAGE_CONF_PATH"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"SOURCE_CONTEXT_DIR"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                  'k:{"name":"ALLOWED_UIDS"}':
+                    .: { }
+                    'f:name': { }
+                    'f:value': { }
+                'f:terminationMessagePath': { }
+                'f:imagePullPolicy': { }
+                'f:name': { }
+            'f:serviceAccountName': { }
+            'f:enableServiceLinks': { }
+            'f:securityContext': { }
+      - manager: multus
+        operation: Update
+        apiVersion: v1
+        time: '2022-01-09T15:28:48Z'
+        fieldsType: FieldsV1
+        fieldsV1:
+          'f:metadata':
+            'f:annotations':
+              'f:k8s.v1.cni.cncf.io/network-status': { }
+              'f:k8s.v1.cni.cncf.io/networks-status': { }
+      - manager: kubelet
+        operation: Update
+        apiVersion: v1
+        time: '2022-01-09T15:29:56Z'
+        fieldsType: FieldsV1
+        fieldsV1:
+          'f:status':
+            'f:conditions':
+              'k:{"type":"ContainersReady"}':
+                .: { }
+                'f:lastProbeTime': { }
+                'f:lastTransitionTime': { }
+                'f:reason': { }
+                'f:status': { }
+                'f:type': { }
+              'k:{"type":"Initialized"}':
+                .: { }
+                'f:lastProbeTime': { }
+                'f:lastTransitionTime': { }
+                'f:reason': { }
+                'f:status': { }
+                'f:type': { }
+              'k:{"type":"Ready"}':
+                .: { }
+                'f:lastProbeTime': { }
+                'f:lastTransitionTime': { }
+                'f:reason': { }
+                'f:status': { }
+                'f:type': { }
+            'f:containerStatuses': { }
+            'f:hostIP': { }
+            'f:initContainerStatuses': { }
+            'f:phase': { }
+            'f:podIP': { }
+            'f:podIPs':
+              .: { }
+              'k:{"ip":"10.130.5.173"}':
+                .: { }
+                'f:ip': { }
+            'f:startTime': { }
+    namespace: fiap-cgalvaojr
+    ownerReferences:
+      - apiVersion: build.openshift.io/v1
+        kind: Build
+        name: blog-django-py-git-1
+        uid: e0c4a169-a0c6-40f3-ac2d-49ea4e4f753b
+        controller: true
+    labels:
+      openshift.io/build.name: blog-django-py-git-1
+  spec:
+    nodeSelector:
+      kubernetes.io/os: linux
+    restartPolicy: Never
+    activeDeadlineSeconds: 604800
+    initContainers:
+      - resources:
+          limits:
+            cpu: 1500m
+            memory: 2Gi
+          requests:
+            cpu: 5m
+            memory: 50Mi
+        terminationMessagePath: /dev/termination-log
+        name: git-clone
+        env:
+          - name: BUILD
+            value: >
+              {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"blog-django-py-git-1","namespace":"fiap-cgalvaojr","selfLink":"/apis/build.openshift.io/v1/namespaces/fiap-cgalvaojr/builds/blog-django-py-git-1","uid":"e0c4a169-a0c6-40f3-ac2d-49ea4e4f753b","resourceVersion":"16251507","creationTimestamp":"2022-01-09T15:28:45Z","labels":{"app":"blog-django-py-git","app.kubernetes.io/component":"blog-django-py-git","app.kubernetes.io/instance":"blog-django-py-git","app.kubernetes.io/name":"python","app.kubernetes.io/part-of":"blog-django-py-git-app","app.openshift.io/runtime":"python","app.openshift.io/runtime-version":"3.8-ubi7","buildconfig":"blog-django-py-git","openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"blog-django-py-git","uid":"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2022-01-09T15:28:45Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:app":{},"f:app.kubernetes.io/component":{},"f:app.kubernetes.io/instance":{},"f:app.kubernetes.io/name":{},"f:app.kubernetes.io/part-of":{},"f:app.openshift.io/runtime":{},"f:app.openshift.io/runtime-version":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7\"}":{".":{},"f:apiVersion":{},"f:controller":{},"f:kind":{},"f:name":{},"f:uid":{}}}},"f:spec":{"f:output":{"f:to":{".":{},"f:kind":{},"f:name":{}}},"f:serviceAccount":{},"f:source":{"f:contextDir":{},"f:git":{".":{},"f:uri":{}},"f:type":{}},"f:strategy":{"f:sourceStrategy":{".":{},"f:from":{".":{},"f:kind":{},"f:name":{}},"f:pullSecret":{".":{},"f:name":{}}},"f:type":{}},"f:triggeredBy":{}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{".":{},"f:kind":{},"f:name":{},"f:namespace":{}},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift-katacoda/blog-django-py.git"},"contextDir":"/"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd"},"pullSecret":{"name":"builder-dockercfg-lvzgz"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest"},"pushSecret":{"name":"builder-dockercfg-lvzgz"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image
+              change","imageChangeBuild":{"imageID":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"python:3.8-ubi7"}}}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest","config":{"kind":"BuildConfig","namespace":"fiap-cgalvaojr","name":"blog-django-py-git"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2022-01-09T15:28:45Z","lastTransitionTime":"2022-01-09T15:28:45Z"}]}}
+          - name: LANG
+            value: C.utf8
+          - name: SOURCE_REPOSITORY
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_URI
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_CONTEXT_DIR
+            value: /
+          - name: ALLOWED_UIDS
+            value: 1-
+          - name: DROP_CAPS
+            value: 'KILL,MKNOD,SETGID,SETUID'
+          - name: BUILD_REGISTRIES_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.conf
+          - name: BUILD_REGISTRIES_DIR_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.d
+          - name: BUILD_SIGNATURE_POLICY_PATH
+            value: /var/run/configs/openshift.io/build-system/policy.json
+          - name: BUILD_STORAGE_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/storage.conf
+          - name: BUILD_BLOBCACHE_DIR
+            value: /var/cache/blobs
+          - name: HTTP_PROXY
+          - name: HTTPS_PROXY
+          - name: NO_PROXY
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: buildworkdir
+            mountPath: /tmp/build
+          - name: build-system-configs
+            readOnly: true
+            mountPath: /var/run/configs/openshift.io/build-system
+          - name: build-ca-bundles
+            mountPath: /var/run/configs/openshift.io/certs
+          - name: build-proxy-ca-bundles
+            mountPath: /var/run/configs/openshift.io/pki
+          - name: build-blob-cache
+            mountPath: /var/cache/blobs
+          - name: builder-token-pp2zp
+            readOnly: true
+            mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        terminationMessagePolicy: FallbackToLogsOnError
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        args:
+          - openshift-git-clone
+          - '--loglevel=0'
+      - resources:
+          limits:
+            cpu: 1500m
+            memory: 2Gi
+          requests:
+            cpu: 5m
+            memory: 50Mi
+        terminationMessagePath: /dev/termination-log
+        name: manage-dockerfile
+        env:
+          - name: BUILD
+            value: >
+              {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"blog-django-py-git-1","namespace":"fiap-cgalvaojr","selfLink":"/apis/build.openshift.io/v1/namespaces/fiap-cgalvaojr/builds/blog-django-py-git-1","uid":"e0c4a169-a0c6-40f3-ac2d-49ea4e4f753b","resourceVersion":"16251507","creationTimestamp":"2022-01-09T15:28:45Z","labels":{"app":"blog-django-py-git","app.kubernetes.io/component":"blog-django-py-git","app.kubernetes.io/instance":"blog-django-py-git","app.kubernetes.io/name":"python","app.kubernetes.io/part-of":"blog-django-py-git-app","app.openshift.io/runtime":"python","app.openshift.io/runtime-version":"3.8-ubi7","buildconfig":"blog-django-py-git","openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"blog-django-py-git","uid":"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2022-01-09T15:28:45Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:app":{},"f:app.kubernetes.io/component":{},"f:app.kubernetes.io/instance":{},"f:app.kubernetes.io/name":{},"f:app.kubernetes.io/part-of":{},"f:app.openshift.io/runtime":{},"f:app.openshift.io/runtime-version":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7\"}":{".":{},"f:apiVersion":{},"f:controller":{},"f:kind":{},"f:name":{},"f:uid":{}}}},"f:spec":{"f:output":{"f:to":{".":{},"f:kind":{},"f:name":{}}},"f:serviceAccount":{},"f:source":{"f:contextDir":{},"f:git":{".":{},"f:uri":{}},"f:type":{}},"f:strategy":{"f:sourceStrategy":{".":{},"f:from":{".":{},"f:kind":{},"f:name":{}},"f:pullSecret":{".":{},"f:name":{}}},"f:type":{}},"f:triggeredBy":{}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{".":{},"f:kind":{},"f:name":{},"f:namespace":{}},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift-katacoda/blog-django-py.git"},"contextDir":"/"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd"},"pullSecret":{"name":"builder-dockercfg-lvzgz"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest"},"pushSecret":{"name":"builder-dockercfg-lvzgz"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image
+              change","imageChangeBuild":{"imageID":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"python:3.8-ubi7"}}}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest","config":{"kind":"BuildConfig","namespace":"fiap-cgalvaojr","name":"blog-django-py-git"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2022-01-09T15:28:45Z","lastTransitionTime":"2022-01-09T15:28:45Z"}]}}
+          - name: LANG
+            value: C.utf8
+          - name: SOURCE_REPOSITORY
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_URI
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_CONTEXT_DIR
+            value: /
+          - name: ALLOWED_UIDS
+            value: 1-
+          - name: DROP_CAPS
+            value: 'KILL,MKNOD,SETGID,SETUID'
+          - name: BUILD_REGISTRIES_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.conf
+          - name: BUILD_REGISTRIES_DIR_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.d
+          - name: BUILD_SIGNATURE_POLICY_PATH
+            value: /var/run/configs/openshift.io/build-system/policy.json
+          - name: BUILD_STORAGE_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/storage.conf
+          - name: BUILD_BLOBCACHE_DIR
+            value: /var/cache/blobs
+          - name: HTTP_PROXY
+          - name: HTTPS_PROXY
+          - name: NO_PROXY
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: buildworkdir
+            mountPath: /tmp/build
+          - name: build-system-configs
+            readOnly: true
+            mountPath: /var/run/configs/openshift.io/build-system
+          - name: build-ca-bundles
+            mountPath: /var/run/configs/openshift.io/certs
+          - name: build-proxy-ca-bundles
+            mountPath: /var/run/configs/openshift.io/pki
+          - name: build-blob-cache
+            mountPath: /var/cache/blobs
+          - name: builder-token-pp2zp
+            readOnly: true
+            mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        terminationMessagePolicy: FallbackToLogsOnError
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        args:
+          - openshift-manage-dockerfile
+          - '--loglevel=0'
+    serviceAccountName: builder
+    imagePullSecrets:
+      - name: builder-dockercfg-lvzgz
+    priority: 0
+    schedulerName: default-scheduler
+    enableServiceLinks: true
+    terminationGracePeriodSeconds: 30
+    preemptionPolicy: PreemptLowerPriority
+    nodeName: na46-bjfsg-worker-0-6pfx8
+    securityContext: { }
+    containers:
+      - resources:
+          limits:
+            cpu: 1500m
+            memory: 2Gi
+          requests:
+            cpu: 5m
+            memory: 50Mi
+        terminationMessagePath: /dev/termination-log
+        name: sti-build
+        env:
+          - name: BUILD
+            value: >
+              {"kind":"Build","apiVersion":"build.openshift.io/v1","metadata":{"name":"blog-django-py-git-1","namespace":"fiap-cgalvaojr","selfLink":"/apis/build.openshift.io/v1/namespaces/fiap-cgalvaojr/builds/blog-django-py-git-1","uid":"e0c4a169-a0c6-40f3-ac2d-49ea4e4f753b","resourceVersion":"16251507","creationTimestamp":"2022-01-09T15:28:45Z","labels":{"app":"blog-django-py-git","app.kubernetes.io/component":"blog-django-py-git","app.kubernetes.io/instance":"blog-django-py-git","app.kubernetes.io/name":"python","app.kubernetes.io/part-of":"blog-django-py-git-app","app.openshift.io/runtime":"python","app.openshift.io/runtime-version":"3.8-ubi7","buildconfig":"blog-django-py-git","openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.start-policy":"Serial"},"annotations":{"openshift.io/build-config.name":"blog-django-py-git","openshift.io/build.number":"1"},"ownerReferences":[{"apiVersion":"build.openshift.io/v1","kind":"BuildConfig","name":"blog-django-py-git","uid":"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7","controller":true}],"managedFields":[{"manager":"openshift-apiserver","operation":"Update","apiVersion":"build.openshift.io/v1","time":"2022-01-09T15:28:45Z","fieldsType":"FieldsV1","fieldsV1":{"f:metadata":{"f:annotations":{".":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.number":{}},"f:labels":{".":{},"f:app":{},"f:app.kubernetes.io/component":{},"f:app.kubernetes.io/instance":{},"f:app.kubernetes.io/name":{},"f:app.kubernetes.io/part-of":{},"f:app.openshift.io/runtime":{},"f:app.openshift.io/runtime-version":{},"f:buildconfig":{},"f:openshift.io/build-config.name":{},"f:openshift.io/build.start-policy":{}},"f:ownerReferences":{".":{},"k:{\"uid\":\"24c08f35-30bd-4a6f-bb2d-f672afdbc7c7\"}":{".":{},"f:apiVersion":{},"f:controller":{},"f:kind":{},"f:name":{},"f:uid":{}}}},"f:spec":{"f:output":{"f:to":{".":{},"f:kind":{},"f:name":{}}},"f:serviceAccount":{},"f:source":{"f:contextDir":{},"f:git":{".":{},"f:uri":{}},"f:type":{}},"f:strategy":{"f:sourceStrategy":{".":{},"f:from":{".":{},"f:kind":{},"f:name":{}},"f:pullSecret":{".":{},"f:name":{}}},"f:type":{}},"f:triggeredBy":{}},"f:status":{"f:conditions":{".":{},"k:{\"type\":\"New\"}":{".":{},"f:lastTransitionTime":{},"f:lastUpdateTime":{},"f:status":{},"f:type":{}}},"f:config":{".":{},"f:kind":{},"f:name":{},"f:namespace":{}},"f:phase":{}}}}]},"spec":{"serviceAccount":"builder","source":{"type":"Git","git":{"uri":"https://github.com/openshift-katacoda/blog-django-py.git"},"contextDir":"/"},"strategy":{"type":"Source","sourceStrategy":{"from":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd"},"pullSecret":{"name":"builder-dockercfg-lvzgz"}}},"output":{"to":{"kind":"DockerImage","name":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest"},"pushSecret":{"name":"builder-dockercfg-lvzgz"}},"resources":{},"postCommit":{},"nodeSelector":null,"triggeredBy":[{"message":"Image
+              change","imageChangeBuild":{"imageID":"image-registry.openshift-image-registry.svc:5000/openshift/python@sha256:210326ea7d1a940d7e8f057cc96a6115c8443658b91a95d6c0ddc91ad80566cd","fromRef":{"kind":"ImageStreamTag","namespace":"openshift","name":"python:3.8-ubi7"}}}]},"status":{"phase":"New","outputDockerImageReference":"image-registry.openshift-image-registry.svc:5000/fiap-cgalvaojr/blog-django-py-git:latest","config":{"kind":"BuildConfig","namespace":"fiap-cgalvaojr","name":"blog-django-py-git"},"output":{},"conditions":[{"type":"New","status":"True","lastUpdateTime":"2022-01-09T15:28:45Z","lastTransitionTime":"2022-01-09T15:28:45Z"}]}}
+          - name: LANG
+            value: C.utf8
+          - name: SOURCE_REPOSITORY
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_URI
+            value: 'https://github.com/openshift-katacoda/blog-django-py.git'
+          - name: SOURCE_CONTEXT_DIR
+            value: /
+          - name: ALLOWED_UIDS
+            value: 1-
+          - name: DROP_CAPS
+            value: 'KILL,MKNOD,SETGID,SETUID'
+          - name: PUSH_DOCKERCFG_PATH
+            value: /var/run/secrets/openshift.io/push
+          - name: PULL_DOCKERCFG_PATH
+            value: /var/run/secrets/openshift.io/pull
+          - name: BUILD_REGISTRIES_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.conf
+          - name: BUILD_REGISTRIES_DIR_PATH
+            value: /var/run/configs/openshift.io/build-system/registries.d
+          - name: BUILD_SIGNATURE_POLICY_PATH
+            value: /var/run/configs/openshift.io/build-system/policy.json
+          - name: BUILD_STORAGE_CONF_PATH
+            value: /var/run/configs/openshift.io/build-system/storage.conf
+          - name: BUILD_STORAGE_DRIVER
+            value: overlay
+          - name: BUILD_BLOBCACHE_DIR
+            value: /var/cache/blobs
+          - name: HTTP_PROXY
+          - name: HTTPS_PROXY
+          - name: NO_PROXY
+        securityContext:
+          privileged: true
+        imagePullPolicy: IfNotPresent
+        volumeMounts:
+          - name: node-pullsecrets
+            mountPath: /var/lib/kubelet/config.json
+          - name: buildworkdir
+            mountPath: /tmp/build
+          - name: buildcachedir
+            mountPath: /var/lib/containers/cache
+          - name: builder-dockercfg-lvzgz-push
+            readOnly: true
+            mountPath: /var/run/secrets/openshift.io/push
+          - name: builder-dockercfg-lvzgz-pull
+            readOnly: true
+            mountPath: /var/run/secrets/openshift.io/pull
+          - name: build-system-configs
+            readOnly: true
+            mountPath: /var/run/configs/openshift.io/build-system
+          - name: build-ca-bundles
+            mountPath: /var/run/configs/openshift.io/certs
+          - name: build-proxy-ca-bundles
+            mountPath: /var/run/configs/openshift.io/pki
+          - name: container-storage-root
+            mountPath: /var/lib/containers/storage
+          - name: build-blob-cache
+            mountPath: /var/cache/blobs
+          - name: builder-token-pp2zp
+            readOnly: true
+            mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+        terminationMessagePolicy: FallbackToLogsOnError
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        args:
+          - openshift-sti-build
+          - '--loglevel=0'
+    serviceAccount: builder
+    volumes:
+      - name: node-pullsecrets
+        hostPath:
+          path: /var/lib/kubelet/config.json
+          type: File
+      - name: buildcachedir
+        hostPath:
+          path: /var/lib/containers/cache
+          type: ''
+      - name: buildworkdir
+        emptyDir: { }
+      - name: builder-dockercfg-lvzgz-push
+        secret:
+          secretName: builder-dockercfg-lvzgz
+          defaultMode: 384
+      - name: builder-dockercfg-lvzgz-pull
+        secret:
+          secretName: builder-dockercfg-lvzgz
+          defaultMode: 384
+      - name: build-system-configs
+        configMap:
+          name: blog-django-py-git-1-sys-config
+          defaultMode: 420
+      - name: build-ca-bundles
+        configMap:
+          name: blog-django-py-git-1-ca
+          items:
+            - key: service-ca.crt
+              path: 'certs.d/image-registry.openshift-image-registry.svc:5000/ca.crt'
+          defaultMode: 420
+      - name: build-proxy-ca-bundles
+        configMap:
+          name: blog-django-py-git-1-global-ca
+          items:
+            - key: ca-bundle.crt
+              path: tls-ca-bundle.pem
+          defaultMode: 420
+      - name: container-storage-root
+        emptyDir: { }
+      - name: build-blob-cache
+        emptyDir: { }
+      - name: builder-token-pp2zp
+        secret:
+          secretName: builder-token-pp2zp
+          defaultMode: 420
+    dnsPolicy: ClusterFirst
+    tolerations:
+      - key: node.kubernetes.io/not-ready
+        operator: Exists
+        effect: NoExecute
+        tolerationSeconds: 300
+      - key: node.kubernetes.io/unreachable
+        operator: Exists
+        effect: NoExecute
+        tolerationSeconds: 300
+      - key: node.kubernetes.io/memory-pressure
+        operator: Exists
+        effect: NoSchedule
+  status:
+    containerStatuses:
+      - restartCount: 0
+        started: false
+        ready: false
+        name: sti-build
+        state:
+          terminated:
+            exitCode: 0
+            reason: Completed
+            startedAt: '2022-01-09T15:28:52Z'
+            finishedAt: '2022-01-09T15:29:56Z'
+            containerID: >-
+              cri-o://9cc6f66bc1f94811aada2199d9a6b2c140af2d329e8696b630971adceb93714b
+        imageID: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        lastState: { }
+        containerID: 'cri-o://9cc6f66bc1f94811aada2199d9a6b2c140af2d329e8696b630971adceb93714b'
+    qosClass: Burstable
+    podIPs:
+      - ip: 10.130.5.173
+    podIP: 10.130.5.173
+    hostIP: 10.0.2.125
+    startTime: '2022-01-09T15:28:46Z'
+    initContainerStatuses:
+      - name: git-clone
+        state:
+          terminated:
+            exitCode: 0
+            reason: Completed
+            startedAt: '2022-01-09T15:28:49Z'
+            finishedAt: '2022-01-09T15:28:50Z'
+            containerID: >-
+              cri-o://716682dd4a78dfdd17d27307a006ee1f450c6cd31ae140b01059c680764e0c74
+        lastState: { }
+        ready: true
+        restartCount: 0
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        imageID: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        containerID: 'cri-o://716682dd4a78dfdd17d27307a006ee1f450c6cd31ae140b01059c680764e0c74'
+      - name: manage-dockerfile
+        state:
+          terminated:
+            exitCode: 0
+            reason: Completed
+            startedAt: '2022-01-09T15:28:51Z'
+            finishedAt: '2022-01-09T15:28:51Z'
+            containerID: >-
+              cri-o://e3d1b2ec5e6b9ff880dda93cd06c0cd10983d05bfe1a162c4f6b70659c2c4214
+        lastState: { }
+        ready: true
+        restartCount: 0
+        image: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        imageID: >-
+          quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:17d408aaf7b8a00c66895a1e50b3c8529be76a342cfa84c478fa2af72576f67f
+        containerID: 'cri-o://e3d1b2ec5e6b9ff880dda93cd06c0cd10983d05bfe1a162c4f6b70659c2c4214'
+    conditions:
+      - type: Initialized
+        status: 'True'
+        lastProbeTime: null
+        lastTransitionTime: '2022-01-09T15:28:52Z'
+        reason: PodCompleted
+      - type: Ready
+        status: 'False'
+        lastProbeTime: null
+        lastTransitionTime: '2022-01-09T15:29:56Z'
+        reason: PodCompleted
+      - type: ContainersReady
+        status: 'False'
+        lastProbeTime: null
+        lastTransitionTime: '2022-01-09T15:29:56Z'
+        reason: PodCompleted
+      - type: PodScheduled
+        status: 'True'
+        lastProbeTime: null
+        lastTransitionTime: '2022-01-09T15:28:46Z'
+    phase: Succeeded
+---
+kind: Pod
+apiVersion: v1
+metadata:
+  annotations:
+    k8s.v1.cni.cncf.io/network-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.130.5.175"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    k8s.v1.cni.cncf.io/networks-status: |-
+      [{
+          "name": "",
+          "interface": "eth0",
+          "ips": [
+              "10.130.5.175"
+          ],
+          "default": true,
+          "dns": {}
+      }]
+    kubernetes.io/limit-ranger: >-
+      LimitRanger plugin set: cpu, memory request for container deployment; cpu,
+      memory limit for container deployment
+    openshift.io/deployment-config.name: sample-database
+    openshift.io/deployment.name: sample-database-1
+    openshift.io/scc: restricted
+  selfLink: /api/v1/namespaces/fiap-cgalvaojr/pods/sample-database-1-deploy
+  resourceVersion: '16259408'
+  name: sample-database-1-deploy
+  uid: 08e43fcb-3256-433f-a9f8-0cd59577f6e6
+  creationTimestamp: '2022-01-09T15:42:29Z'
+  managedFields:
+    - manager: openshift-controller-manager
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:42:29Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            .: {}
+            'f:openshift.io/deployment-config.name': {}
+            'f:openshift.io/deployment.name': {}
+          'f:labels':
+            .: {}
+            'f:openshift.io/deployer-pod-for.name': {}
+          'f:ownerReferences':
+            .: {}
+            'k:{"uid":"00e00832-2996-40a7-90e7-1647494b0d2c"}':
+              .: {}
+              'f:apiVersion': {}
+              'f:kind': {}
+              'f:name': {}
+              'f:uid': {}
+        'f:spec':
+          'f:containers':
+            'k:{"name":"deployment"}':
+              .: {}
+              'f:env':
+                .: {}
+                'k:{"name":"OPENSHIFT_DEPLOYMENT_NAME"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+                'k:{"name":"OPENSHIFT_DEPLOYMENT_NAMESPACE"}':
+                  .: {}
+                  'f:name': {}
+                  'f:value': {}
+              'f:image': {}
+              'f:imagePullPolicy': {}
+              'f:name': {}
+              'f:resources': {}
+              'f:terminationMessagePath': {}
+              'f:terminationMessagePolicy': {}
+          'f:dnsPolicy': {}
+          'f:serviceAccount': {}
+          'f:restartPolicy': {}
+          'f:activeDeadlineSeconds': {}
+          'f:schedulerName': {}
+          'f:terminationGracePeriodSeconds': {}
+          'f:shareProcessNamespace': {}
+          'f:serviceAccountName': {}
+          'f:enableServiceLinks': {}
+          'f:securityContext': {}
+    - manager: multus
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:42:31Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:metadata':
+          'f:annotations':
+            'f:k8s.v1.cni.cncf.io/network-status': {}
+            'f:k8s.v1.cni.cncf.io/networks-status': {}
+    - manager: kubelet
+      operation: Update
+      apiVersion: v1
+      time: '2022-01-09T15:42:47Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        'f:status':
+          'f:conditions':
+            'k:{"type":"ContainersReady"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Initialized"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+            'k:{"type":"Ready"}':
+              .: {}
+              'f:lastProbeTime': {}
+              'f:lastTransitionTime': {}
+              'f:reason': {}
+              'f:status': {}
+              'f:type': {}
+          'f:containerStatuses': {}
+          'f:hostIP': {}
+          'f:phase': {}
+          'f:podIP': {}
+          'f:podIPs':
+            .: {}
+            'k:{"ip":"10.130.5.175"}':
+              .: {}
+              'f:ip': {}
+          'f:startTime': {}
+  namespace: fiap-cgalvaojr
+  ownerReferences:
+    - apiVersion: v1
+      kind: ReplicationController
+      name: sample-database-1
+      uid: 00e00832-2996-40a7-90e7-1647494b0d2c
+  labels:
+    openshift.io/deployer-pod-for.name: sample-database-1
+spec:
+  restartPolicy: Never
+  activeDeadlineSeconds: 21600
+  serviceAccountName: deployer
+  imagePullSecrets:
+    - name: deployer-dockercfg-hlf4z
+  priority: 0
+  schedulerName: default-scheduler
+  enableServiceLinks: true
+  terminationGracePeriodSeconds: 10
+  shareProcessNamespace: false
+  preemptionPolicy: PreemptLowerPriority
+  nodeName: na46-bjfsg-worker-0-6pfx8
+  securityContext:
+    seLinuxOptions:
+      level: 's0:c49,c19'
+    fsGroup: 1002390000
+  containers:
+    - resources:
+        limits:
+          cpu: 1500m
+          memory: 2Gi
+        requests:
+          cpu: 5m
+          memory: 50Mi
+      terminationMessagePath: /dev/termination-log
+      name: deployment
+      env:
+        - name: OPENSHIFT_DEPLOYMENT_NAME
+          value: sample-database-1
+        - name: OPENSHIFT_DEPLOYMENT_NAMESPACE
+          value: fiap-cgalvaojr
+      securityContext:
+        capabilities:
+          drop:
+            - KILL
+            - MKNOD
+            - SETGID
+            - SETUID
+        runAsUser: 1002390000
+      imagePullPolicy: IfNotPresent
+      volumeMounts:
+        - name: deployer-token-fhsp5
+          readOnly: true
+          mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      terminationMessagePolicy: File
+      image: >-
+        quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:31644151defbf36a8f70424531a0d83fa238a0fe2bea2fbcd1a1db527e1b78b2
+  serviceAccount: deployer
+  volumes:
+    - name: deployer-token-fhsp5
+      secret:
+        secretName: deployer-token-fhsp5
+        defaultMode: 420
+  dnsPolicy: ClusterFirst
+  tolerations:
+    - key: node.kubernetes.io/not-ready
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/unreachable
+      operator: Exists
+      effect: NoExecute
+      tolerationSeconds: 300
+    - key: node.kubernetes.io/memory-pressure
+      operator: Exists
+      effect: NoSchedule
+status:
+  phase: Succeeded
+  conditions:
+    - type: Initialized
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:42:29Z'
+      reason: PodCompleted
+    - type: Ready
+      status: 'False'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:42:47Z'
+      reason: PodCompleted
+    - type: ContainersReady
+      status: 'False'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:42:47Z'
+      reason: PodCompleted
+    - type: PodScheduled
+      status: 'True'
+      lastProbeTime: null
+      lastTransitionTime: '2022-01-09T15:42:29Z'
+  hostIP: 10.0.2.125
+  podIP: 10.130.5.175
+  podIPs:
+    - ip: 10.130.5.175
+  startTime: '2022-01-09T15:42:29Z'
+  containerStatuses:
+    - restartCount: 0
+      started: false
+      ready: false
+      name: deployment
+      state:
+        terminated:
+          exitCode: 0
+          reason: Completed
+          startedAt: '2022-01-09T15:42:32Z'
+          finishedAt: '2022-01-09T15:42:46Z'
+          containerID: >-
+            cri-o://bed394378c5b92530cce08c8143a6dad8e0f0bad6972209840da01e1344f0a0a
+      imageID: >-
+        quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:31644151defbf36a8f70424531a0d83fa238a0fe2bea2fbcd1a1db527e1b78b2
+      image: >-
+        quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:31644151defbf36a8f70424531a0d83fa238a0fe2bea2fbcd1a1db527e1b78b2
+      lastState: {}
+      containerID: 'cri-o://bed394378c5b92530cce08c8143a6dad8e0f0bad6972209840da01e1344f0a0a'
+  qosClass: Burstable
+
